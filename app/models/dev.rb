@@ -8,6 +8,7 @@ class Dev < ActiveRecord::Base
     end
 
     def give_away(dev, freebie)
-        
+       to_give = self.freebies.filter{|freebie| freebie == freebie}
+       to_give
     end
 end
