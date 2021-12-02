@@ -8,7 +8,8 @@ class Dev < ActiveRecord::Base
     end
 
     def give_away(dev, freebie)
-       to_give = self.freebies.filter{|freebie| freebie == freebie}
-       to_give
+       puts "dev = #{dev.name} free = #{freebie.item_name}"
+       to_give = self.freebies.find{|item| item.id == freebie.id} 
+       to_give ? to_give.update(dev_id: dev.id) : "You cannot give away something that isnt yours #{self.name}"
     end
 end
